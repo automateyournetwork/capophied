@@ -1,0 +1,23 @@
+version: '2.3'
+
+services:
+  capophied:
+    image: johncapobianco/capophied:capophied
+    container_name: capophied
+    restart: always
+    build: 
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./microsoft/phi-2:/app/phi-2
+    environment:
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - NVIDIA_VISIBLE_DEVICES=all        
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]      
