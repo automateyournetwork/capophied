@@ -18,7 +18,7 @@ tokenizer = AutoTokenizer.from_pretrained("/app/phi-2", trust_remote_code=True)
 # Streamlit UI
 st.title("Capophied")
 prompt = st.text_area("Enter your prompt", "Where is the CN Tower and what can you tell me about it?")
-enhanced_prompt = f"Provide a concise, factual summary about: { prompt }. Keep your answer specific to the original question: { prompt }"
+enhanced_prompt = f"Instruct: Provide a concise, factual summary about: {prompt}\nOutput:"
 
 if st.button("Generate Output"):
     with torch.no_grad():
@@ -26,8 +26,7 @@ if st.button("Generate Output"):
         token_ids = tokenizer.encode(enhanced_prompt, add_special_tokens=False, return_tensors="pt").to(device)
         output_ids = model.generate(
             token_ids,
-#            max_length=150,  # Limiting the response length
-            max_new_tokens=2048,
+            max_new_tokens=512,
             no_repeat_ngram_size=2,  # Prevents repeating the same information
             do_sample=True,
             temperature=0.7,
