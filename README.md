@@ -10,9 +10,9 @@ $ git clone https://github.com/automateyournetwork/capophied
 
 $ cd capophied
 
-$ git lfs install
+$ capofied/git lfs install
 
-$ git clone https://huggingface.co/microsoft/phi-2
+$ capofied/git clone https://huggingface.co/microsoft/phi-2
 
 You should have an appromixately 10GB local folder inside /capophied/microsoft/phi-2
 
