@@ -23,7 +23,7 @@ if st.button("Generate Output"):
     formatted_prompt = f"Instruct: {user_prompt}\nOutput:"
     with torch.no_grad():
         # Encode input and move tensors to the device
-        token_ids = tokenizer.encode(formatted_prompt, return_tensors="pt").float.to(device)
+        token_ids = tokenizer.encode(formatted_prompt, return_tensors="pt").to(device)
         output_ids = model.generate(
             token_ids,
             max_new_tokens=512,
