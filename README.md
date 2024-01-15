@@ -4,7 +4,7 @@ A free open source AI chatbot / assistant alternative to chatGPT built using Mic
 ## Installation steps: 
 
 ### Clone this repository:
-$ git clone 
+$ git clone https://github.com/automateyournetwork/capophied
 
 ### Clone the Phi-2 SML locally: 
 
